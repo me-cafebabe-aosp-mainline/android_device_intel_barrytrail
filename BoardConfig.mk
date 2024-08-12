@@ -7,12 +7,18 @@
 USES_DEVICE_INTEL_BARRYTRAIL := true
 DEVICE_PATH := device/intel/barrytrail
 
+# Arch
+TARGET_CPU_ABI := x86_64
+TARGET_ARCH := x86_64
+TARGET_ARCH_VARIANT := x86_64
+
 # Bootloader
 BOARD_BOOT_HEADER_VERSION := 3
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 TARGET_NO_BOOTLOADER := true
 
 # Boot manager
+TARGET_BOOT_MANAGER ?= grub
 TARGET_GRUB_BOOT_CONFIG := $(DEVICE_PATH)/bootmgr/grub/grub-boot.cfg
 TARGET_GRUB_INSTALL_CONFIG := $(DEVICE_PATH)/bootmgr/grub/grub-install.cfg
 TARGET_REFIND_BOOT_CONFIG := $(DEVICE_PATH)/bootmgr/rEFInd/refind-boot.conf
@@ -40,11 +46,17 @@ endif
 # Graphics (Swiftshader)
 include device/google/cuttlefish/shared/swiftshader/BoardConfig.mk
 
+# GRUB
+TARGET_GRUB_ARCH := x86_64-efi
+
 # Init
 TARGET_INIT_VENDOR_LIB ?= //$(DEVICE_PATH):init_barrytrail
 TARGET_RECOVERY_DEVICE_MODULES ?= init_barrytrail
 
 # Kernel
+BOARD_KERNEL_IMAGE_NAME := bzImage
+TARGET_KERNEL_ARCH := x86
+
 BOARD_KERNEL_CMDLINE := \
     console=tty0 \
     log_buf_len=4M \
