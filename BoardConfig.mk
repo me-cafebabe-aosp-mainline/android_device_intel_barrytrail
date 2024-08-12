@@ -61,6 +61,7 @@ BOARD_KERNEL_CMDLINE := \
     console=tty0 \
     log_buf_len=4M \
     loop.max_part=7 \
+    mitigations=off \
     printk.devkmsg=on \
     rw \
     androidboot.boot_devices=any \
