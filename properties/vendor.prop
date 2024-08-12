@@ -4,9 +4,6 @@ persist.bluetooth.a2dp_aac.vbr_supported=true
 # DHCP
 vendor.recovery.dhcpclient.iface?=eth0
 
-# Input
-qemu.hw.mainkeys=0
-
 # Incremental FS
 ro.incremental.enable=1
 
