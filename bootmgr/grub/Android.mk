@@ -20,15 +20,6 @@ ifeq ($(TARGET_GRUB_ARCH),x86_64-efi)
 GRUB_MKSTANDALONE_FORMAT := x86_64-efi
 endif
 
-# $(1): filesystem root directory
-# $(2): path to grub.cfg file
-define install-grub-theme
-	sed -i "s|@BOOTMGR_THEME@|$(BOOTMGR_THEME)|g" $(2)
-	mkdir -p $(1)/boot/grub/themes
-	rm -rf $(1)/boot/grub/themes/$(BOOTMGR_THEME)
-	$(if $(BOOTMGR_THEME), cp -r $(COMMON_GRUB_PATH)/themes/$(BOOTMGR_THEME) $(1)/boot/grub/themes/)
-endef
-
 # $(1): output file
 # $(2): dependencies
 # $(3): workdir
@@ -49,7 +40,6 @@ define make-espimage
 
 	cp $(5) $(3)/fsroot/boot/grub/grub.cfg
 	$(call process-bootmgr-cfg-common,$(3)/fsroot/boot/grub/grub.cfg)
-	$(call install-grub-theme,$(3)/fsroot,$(3)/fsroot/boot/grub/grub.cfg)
 
 	$(call create-espimage,$(1),$(3)/fsroot/EFI $(3)/fsroot/boot $(2),$(4))
 endef
