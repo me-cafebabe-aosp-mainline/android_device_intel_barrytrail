@@ -1,4 +1,9 @@
 # Block devices
+/dev/block/mmcblk[0-9]p2	u:object_r:super_block_device:s0
+/dev/block/mmcblk[0-9]p3	u:object_r:misc_block_device:s0
+/dev/block/mmcblk[0-9]p4	u:object_r:metadata_block_device:s0
+/dev/block/mmcblk[0-9]p5	u:object_r:cache_block_device:s0
+/dev/block/mmcblk[0-9]p9	u:object_r:userdata_block_device:s0
 /dev/block/mmcblk.*		u:object_r:mmcblk_device:s0
 
 # Executables

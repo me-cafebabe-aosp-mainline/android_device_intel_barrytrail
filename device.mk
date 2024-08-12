@@ -68,6 +68,28 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service.software
 
+# Graphics (Mesa)
+ifneq ($(wildcard external/mesa/android/Android.mk),)
+PRODUCT_PACKAGES += \
+    libEGL_mesa \
+    libGLESv1_CM_mesa \
+    libGLESv2_mesa \
+    libgallium_dri \
+    libglapi
+
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.graphics.mesa.is_upstream=true
+else
+PRODUCT_PACKAGES += \
+    libGLES_mesa
+
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.graphics.mesa.is_upstream=false
+
+PRODUCT_SOONG_NAMESPACES += \
+    external/mesa3d
+endif
+
 # Graphics (Swiftshader)
 PRODUCT_PACKAGES += \
     com.google.cf.vulkan
@@ -101,6 +123,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/init.barrytrail.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.barrytrail.rc \
     $(LOCAL_PATH)/config/ueventd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc
 
+PRODUCT_PACKAGES += \
+    fstab.barrytrail
+
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/Generic.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Generic.kl
@@ -113,6 +138,15 @@ PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 
 # Kernel
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
+TARGET_PREBUILT_KERNEL_USE ?= 6.1
+TARGET_PREBUILT_KERNEL_DIR := device/intel/kernel-barrytrail/$(TARGET_PREBUILT_KERNEL_USE)
+TARGET_KERNEL_SOURCE := kernel/intel/barrytrail
+ifneq ($(wildcard $(TARGET_KERNEL_SOURCE)/Makefile),)
+    $(warning Using source built kernel)
+else ifneq ($(wildcard $(TARGET_PREBUILT_KERNEL_DIR)/kernel),)
+    PRODUCT_COPY_FILES += $(TARGET_PREBUILT_KERNEL_DIR)/kernel:kernel
+    $(warning Using prebuilt kernel from $(TARGET_PREBUILT_KERNEL_DIR)/kernel)
+endif
 
 # Keymint
 PRODUCT_PACKAGES += \
@@ -193,6 +227,10 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     sgdisk.recovery
+
+# Vendor ramdisk
+PRODUCT_PACKAGES += \
+    fstab.barrytrail.vendor_ramdisk
 
 # VirtWifi
 PRODUCT_PACKAGES += \

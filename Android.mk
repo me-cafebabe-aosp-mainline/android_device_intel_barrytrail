@@ -99,6 +99,27 @@ diskimage-mmcblk-nodeps:
 	@echo "make $(INSTALLED_DISKIMAGE_MMCBLK_TARGET): ignoring dependencies"
 	$(call make-diskimage-target,$(INSTALLED_DISKIMAGE_MMCBLK_TARGET),mmcblk)
 
+
+# Create prebuilt kernel repo
+ifneq ($(LINEAGE_BUILD),)
+ifneq ($(wildcard $(TARGET_KERNEL_SOURCE)/Makefile),)
+INSTALLED_PREBUILT_KERNEL_REPO_DIR := out/kernel-barrytrail/$(TARGET_PREBUILT_KERNEL_USE)
+
+INSTALLED_PREBUILT_KERNEL_REPO_KERNEL_TARGET := $(INSTALLED_PREBUILT_KERNEL_REPO_DIR)/kernel
+$(INSTALLED_PREBUILT_KERNEL_REPO_KERNEL_TARGET): $(PRODUCT_OUT)/kernel
+	$(call pretty,"Target prebuilt kernel repo: $@")
+	mkdir -p $(INSTALLED_PREBUILT_KERNEL_REPO_DIR)
+	rm -f $(INSTALLED_PREBUILT_KERNEL_REPO_DIR)/*.ko
+	if grep -q '=m' $(PRODUCT_OUT)/obj/KERNEL_OBJ/.config; then\
+		cp `find $(PRODUCT_OUT)/obj/KERNEL_OBJ/ -type f -name "*.ko"` $(INSTALLED_PREBUILT_KERNEL_REPO_DIR)/;\
+	fi
+	cp $(PRODUCT_OUT)/kernel $@
+
+.PHONY: prebuilt-kernel-repo
+prebuilt-kernel-repo: $(INSTALLED_PREBUILT_KERNEL_REPO_KERNEL_TARGET)
+endif # $(TARGET_KERNEL_SOURCE)/Makefile
+endif # LINEAGE_BUILD
+
 # Firmware mount point
 FIRMWARE_MOUNT_POINT := $(TARGET_OUT_VENDOR)/firmware_mnt
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MOUNT_POINT)

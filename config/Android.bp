@@ -1,0 +1,6 @@
+prebuilt_etc {
+    name: "fstab.barrytrail",
+    src: "fstab.barrytrail",
+    vendor: true,
+    vendor_ramdisk_available: true,
+}

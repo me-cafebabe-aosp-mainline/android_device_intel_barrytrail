@@ -12,6 +12,12 @@ BOARD_BOOT_HEADER_VERSION := 3
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 TARGET_NO_BOOTLOADER := true
 
+# Boot manager
+TARGET_GRUB_BOOT_CONFIG := $(DEVICE_PATH)/bootmgr/grub/grub-boot.cfg
+TARGET_GRUB_INSTALL_CONFIG := $(DEVICE_PATH)/bootmgr/grub/grub-install.cfg
+TARGET_REFIND_BOOT_CONFIG := $(DEVICE_PATH)/bootmgr/rEFInd/refind-boot.conf
+TARGET_REFIND_INSTALL_CONFIG := $(DEVICE_PATH)/bootmgr/rEFInd/refind-install.conf
+
 # Fastboot
 TARGET_BOARD_FASTBOOT_INFO_FILE := $(DEVICE_PATH)/fastboot-info.txt
 
@@ -22,6 +28,15 @@ TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
+# Graphics (Mesa)
+ifneq ($(wildcard external/mesa/android/Android.mk),)
+BUILD_BROKEN_INCORRECT_PARTITION_IMAGES := true
+BOARD_MESA3D_USES_MESON_BUILD := true
+BOARD_MESA3D_GALLIUM_DRIVERS := i915
+else
+BOARD_GPU_DRIVERS := i915 i965
+endif
+
 # Graphics (Swiftshader)
 include device/google/cuttlefish/shared/swiftshader/BoardConfig.mk
 
@@ -31,12 +46,14 @@ TARGET_RECOVERY_DEVICE_MODULES ?= init_barrytrail
 
 # Kernel
 BOARD_KERNEL_CMDLINE := \
+    console=tty0 \
     log_buf_len=4M \
     loop.max_part=7 \
     printk.devkmsg=on \
     rw \
     androidboot.boot_devices=any \
     androidboot.first_stage_console=0 \
+    androidboot.hardware=barrytrail \
     androidboot.verifiedbootstate=orange
 
 ifneq ($(wildcard $(TARGET_KERNEL_SOURCE)/Makefile),)
@@ -44,9 +61,13 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD := \
     $(strip $(shell cat $(wildcard $(DEVICE_PATH)/config/modules.load.vendor.*)))
 TARGET_KERNEL_CONFIG := \
     gki_defconfig \
+    lineageos/barrytrail.config \
     lineageos/peripheral/bluetooth.config \
     lineageos/peripheral/wifi.config \
     lineageos/feature/fbcon.config
+else ifneq ($(wildcard $(TARGET_PREBUILT_KERNEL_DIR)/kernel),)
+BOARD_VENDOR_KERNEL_MODULES := \
+    $(wildcard $(TARGET_PREBUILT_KERNEL_DIR)/*.ko)
 endif
 
 # Partitions
@@ -114,6 +135,8 @@ endif
 BOARD_RAMDISK_USE_LZ4 := true
 
 # Recovery
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/config/fstab.barrytrail
+TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TARGET_RECOVERY_UI_LIB := librecovery_ui_barrytrail
 
 # Releasetools
