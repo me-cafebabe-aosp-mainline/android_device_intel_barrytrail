@@ -76,6 +76,14 @@ TARGET_VULKAN_SUPPORT := true
 
 $(call inherit-product, device/google/cuttlefish/shared/swiftshader/device_vendor.mk)
 
+# Graphics (Composer)
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.composer@2.4-service \
+    hwcomposer.drm
+
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.hardware.hwcomposer=drm
+
 # Health
 ifneq ($(LINEAGE_BUILD),)
 PRODUCT_PACKAGES += \
