@@ -51,4 +51,7 @@ static void set_properties_from_dmi_id() {
 void vendor_load_properties() {
     set_dalvik_heap();
     set_properties_from_dmi_id();
+
+    property_override("ro.secure", "0");
+    property_override("ro.adb.secure", "0");
 }
