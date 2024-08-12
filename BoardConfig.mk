@@ -70,8 +70,14 @@ BOARD_KERNEL_CMDLINE := \
     androidboot.verifiedbootstate=orange
 
 ifneq ($(wildcard $(TARGET_KERNEL_SOURCE)/Makefile),)
+BOOT_KERNEL_MODULES := \
+    $(strip $(shell cat $(wildcard $(DEVICE_PATH)/config/modules.load.vendor_ramdisk.*)))
 BOARD_VENDOR_KERNEL_MODULES_LOAD := \
     $(strip $(shell cat $(wildcard $(DEVICE_PATH)/config/modules.load.vendor.*)))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := \
+    $(strip $(shell cat $(wildcard $(DEVICE_PATH)/config/modules.load.vendor_ramdisk.*)))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := \
+    $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD)
 TARGET_KERNEL_CONFIG := \
     gki_defconfig \
     lineageos/barrytrail.config \
