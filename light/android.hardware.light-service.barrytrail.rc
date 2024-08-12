@@ -3,8 +3,8 @@ on early-boot
     chown system system /sys/class/backlight/backlight/brightness
     chown system system /sys/class/backlight/backlight/max_brightness
 
-    chown system system /sys/class/backlight/panel0-backlight/brightness
-    chown system system /sys/class/backlight/panel0-backlight/max_brightness
+    chown system system /sys/class/backlight/intel_backlight/brightness
+    chown system system /sys/class/backlight/intel_backlight/max_brightness
 
 service vendor.light-default /vendor/bin/hw/android.hardware.light-service.barrytrail
     class hal
