@@ -214,10 +214,6 @@ PRODUCT_SHIPPING_API_LEVEL := 33
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
-# Suspend blocker
-PRODUCT_PACKAGES += \
-    suspend_blocker
-
 # UFFD GC
 PRODUCT_ENABLE_UFFD_GC := true
 
