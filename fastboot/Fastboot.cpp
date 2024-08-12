@@ -83,7 +83,7 @@ ScopedAStatus Fastboot::getVariant(std::string* _aidl_return) {
 }
 
 ScopedAStatus Fastboot::getOffModeChargeState(bool* _aidl_return) {
-    *_aidl_return = false;
+    *_aidl_return = true;
     return ScopedAStatus::ok();
 }
 
