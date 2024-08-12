@@ -9,7 +9,6 @@
 # Executables
 /vendor/bin/dlkm_loader							u:object_r:dlkm_loader_exec:s0
 /vendor/bin/refind-update-default_selection.sh				u:object_r:vendor_efi_update_default_sh_exec:s0
-/vendor/bin/setup_wifi							u:object_r:setup_wifi_exec:s0
 /vendor/bin/hw/android\.hardware\.gatekeeper@1\.0-service.software	u:object_r:hal_gatekeeper_default_exec:s0
 /vendor/bin/hw/android\.hardware\.graphics\.allocator@4\.0-service\.minigbm_intel	u:object_r:hal_graphics_allocator_default_exec:s0
 

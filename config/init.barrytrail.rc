@@ -59,14 +59,3 @@ service vendor.refind-update-default_selection /vendor/bin/refind-update-default
 
 on property:sys.shutdown.requested=*
     start vendor.refind-update-default_selection
-
-# VirtWifi
-service setup_wifi /vendor/bin/setup_wifi --interface=${ro.vendor.virtwifi.port}
-    override
-    disabled
-    oneshot
-    user root
-    group root
-
-on post-fs-data && property:ro.boot.wifi_impl=virt_wifi
-    start setup_wifi

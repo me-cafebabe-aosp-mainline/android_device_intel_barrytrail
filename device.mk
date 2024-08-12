@@ -228,10 +228,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.barrytrail.vendor_ramdisk
 
-# VirtWifi
-PRODUCT_PACKAGES += \
-    setup_wifi
-
 # Wi-Fi
 PRODUCT_COPY_FILES += \
     device/google/cuttlefish/shared/config/p2p_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant.conf \
