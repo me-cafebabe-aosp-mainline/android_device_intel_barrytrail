@@ -2,7 +2,6 @@ service dhcpclient /system/bin/dhcpclient -i ${vendor.recovery.ethernet.dhcp.ifa
     user root
     group root
     seclabel u:r:dhcpclient:s0
-    oneshot
     disabled
 
 on fs
