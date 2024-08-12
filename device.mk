@@ -109,8 +109,7 @@ PRODUCT_COPY_FILES += \
 
 # Input
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/config/Generic.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Generic.kl \
-    $(LOCAL_PATH)/tablet2multitouch/uinput_multitouch_device.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput_multitouch_device.idc
+    $(LOCAL_PATH)/config/Generic.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Generic.kl
 
 # Images
 PRODUCT_BUILD_BOOT_IMAGE := true
@@ -190,10 +189,6 @@ PRODUCT_SOONG_NAMESPACES += \
 # Suspend blocker
 PRODUCT_PACKAGES += \
     suspend_blocker
-
-# Tablet to multitouch
-PRODUCT_PACKAGES += \
-    tablet2multitouch
 
 # UFFD GC
 PRODUCT_ENABLE_UFFD_GC := true
