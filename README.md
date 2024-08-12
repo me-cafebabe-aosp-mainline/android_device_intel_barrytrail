@@ -1,4 +1,4 @@
-# Android common device tree for Virtual Machines
+# Android common device tree for Intel Baytrail / Cherrytrail devices
 
 The device tree is currently WIP, Not suitable for normal use.
 

@@ -1,4 +1,4 @@
-# fastboot-info for virt-common
+# fastboot-info for barrytrail
 version 1
 
 flash EFI

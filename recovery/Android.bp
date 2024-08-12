@@ -19,7 +19,7 @@ package {
 }
 
 cc_library {
-    name: "librecovery_ui_virt",
+    name: "librecovery_ui_barrytrail",
     cflags: [
         "-Wall",
         "-Wextra",

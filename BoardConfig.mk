@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-USES_DEVICE_VIRT_VIRT_COMMON := true
-VIRT_COMMON_PATH := device/virt/virt-common
+USES_DEVICE_INTEL_BARRYTRAIL := true
+DEVICE_PATH := device/intel/barrytrail
 
 # Bootloader
 BOARD_BOOT_HEADER_VERSION := 3
@@ -13,7 +13,7 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 TARGET_NO_BOOTLOADER := true
 
 # Fastboot
-TARGET_BOARD_FASTBOOT_INFO_FILE := $(VIRT_COMMON_PATH)/fastboot-info.txt
+TARGET_BOARD_FASTBOOT_INFO_FILE := $(DEVICE_PATH)/fastboot-info.txt
 
 # Filesystem
 BOARD_EXT4_SHARE_DUP_BLOCKS :=
@@ -27,8 +27,8 @@ TARGET_USERIMAGES_USE_EXT4 := true
 include device/google/cuttlefish/shared/swiftshader/BoardConfig.mk
 
 # Init
-TARGET_INIT_VENDOR_LIB ?= //$(VIRT_COMMON_PATH):init_virt
-TARGET_RECOVERY_DEVICE_MODULES ?= init_virt
+TARGET_INIT_VENDOR_LIB ?= //$(DEVICE_PATH):init_barrytrail
+TARGET_RECOVERY_DEVICE_MODULES ?= init_barrytrail
 
 # Kernel
 BOARD_KERNEL_CMDLINE := \
@@ -42,7 +42,7 @@ BOARD_KERNEL_CMDLINE := \
 
 ifneq ($(wildcard $(TARGET_KERNEL_SOURCE)/Makefile),)
 BOARD_VENDOR_KERNEL_MODULES_LOAD := \
-    $(strip $(shell cat $(wildcard $(VIRT_COMMON_PATH)/config/modules.load.vendor.*)))
+    $(strip $(shell cat $(wildcard $(DEVICE_PATH)/config/modules.load.vendor.*)))
 TARGET_KERNEL_CONFIG := \
     gki_defconfig \
     lineageos/peripheral/bluetooth.config \
@@ -101,13 +101,13 @@ endif
 TARGET_BOARD_PLATFORM := virt
 
 # Properties
-TARGET_PRODUCT_PROP := $(VIRT_COMMON_PATH)/properties/product.prop
-TARGET_VENDOR_PROP := $(VIRT_COMMON_PATH)/properties/vendor.prop
+TARGET_PRODUCT_PROP := $(DEVICE_PATH)/properties/product.prop
+TARGET_VENDOR_PROP := $(DEVICE_PATH)/properties/vendor.prop
 
 ifneq ($(PRODUCT_IS_ATV),true)
 ifneq ($(PRODUCT_IS_AUTOMOTIVE),true)
 TARGET_VENDOR_PROP += \
-    $(VIRT_COMMON_PATH)/properties/vendor_bluetooth_profiles.prop
+    $(DEVICE_PATH)/properties/vendor_bluetooth_profiles.prop
 endif
 endif
 
@@ -115,10 +115,10 @@ endif
 BOARD_RAMDISK_USE_LZ4 := true
 
 # Recovery
-TARGET_RECOVERY_UI_LIB := librecovery_ui_virt
+TARGET_RECOVERY_UI_LIB := librecovery_ui_barrytrail
 
 # Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := $(VIRT_COMMON_PATH)
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
@@ -128,17 +128,17 @@ VENDOR_SECURITY_PATCH = $(PLATFORM_SECURITY_PATCH)
 
 # SELinux
 BOARD_VENDOR_SEPOLICY_DIRS := \
-    $(VIRT_COMMON_PATH)/sepolicy/vendor \
+    $(DEVICE_PATH)/sepolicy/vendor \
     device/google/cuttlefish/shared/graphics/sepolicy \
     device/google/cuttlefish/shared/swiftshader/sepolicy \
     device/google/cuttlefish/shared/virgl/sepolicy \
     external/minigbm/cros_gralloc/sepolicy
 
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(VIRT_COMMON_PATH)/sepolicy/private
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 
 # VINTF
 DEVICE_MANIFEST_FILE := \
-    $(VIRT_COMMON_PATH)/config/manifest.xml
+    $(DEVICE_PATH)/config/manifest.xml
 
 # Wi-Fi
 BOARD_HOSTAPD_DRIVER := NL80211

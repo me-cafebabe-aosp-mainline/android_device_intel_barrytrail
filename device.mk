@@ -44,7 +44,7 @@ $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-he
 
 # DHCP client
 PRODUCT_PACKAGES += \
-    virt_dhcpclient.recovery
+    barrytrail_dhcpclient.recovery
 
 # DLKM Loader
 PRODUCT_PACKAGES += \
@@ -56,7 +56,7 @@ PRODUCT_COPY_FILES += \
 
 # Fastbootd
 PRODUCT_PACKAGES += \
-    android.hardware.fastboot-service.virt_recovery \
+    android.hardware.fastboot-service.barrytrail_recovery \
     fastbootd
 
 # First stage console
@@ -104,7 +104,7 @@ endif
 
 # Init
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/config/init.virt.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.virt.rc \
+    $(LOCAL_PATH)/config/init.barrytrail.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.barrytrail.rc \
     $(LOCAL_PATH)/config/ueventd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc
 
 # Input
@@ -172,7 +172,7 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bootmgr/rEFInd/refind-update-default_selection.sh:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/refind-update-default_selection.sh \
     $(LOCAL_PATH)/config/create_partition_table.sh:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/create_partition_table.sh \
-    $(LOCAL_PATH)/config/init.recovery.virt.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.virt.rc \
+    $(LOCAL_PATH)/config/init.recovery.barrytrail.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.barrytrail.rc \
     $(LOCAL_PATH)/config/ueventd.rc:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/ueventd.rc \
     device/google/cuttlefish/shared/config/cgroups.json:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/cgroups.json
 
