@@ -1,5 +1,5 @@
 # Block devices
-/dev/block/sd[a-z][0-9]*		u:object_r:sd_device:s0
+/dev/block/mmcblk.*		u:object_r:mmcblk_device:s0
 
 # Executables
 /vendor/bin/dlkm_loader							u:object_r:dlkm_loader_exec:s0

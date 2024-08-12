@@ -92,15 +92,9 @@ PRODUCT_PACKAGES += \
     mapper.minigbm
 
 # Health
-ifneq ($(LINEAGE_BUILD),)
 PRODUCT_PACKAGES += \
-    android.hardware.health-service.batteryless \
-    android.hardware.health-service.batteryless_recovery
-else
-PRODUCT_PACKAGES += \
-    android.hardware.health-service.cuttlefish_recovery \
-    com.google.cf.health
-endif
+    android.hardware.health-service.example \
+    android.hardware.health-service.example_recovery
 
 # Init
 PRODUCT_COPY_FILES += \

@@ -48,18 +48,18 @@ The device tree targets Android 14 QPR3.
 source build/envsetup.sh
 ```
 
-2. Select the build target (Using `virtio_x86_64` as example)
+2. Select the build target
 
 For AOSP:
-`lunch aosp_virtio_x86_64-ap2a-userdebug`
+`lunch aosp_barrytrail-ap2a-userdebug`
 
 For LineageOS:
-`breakfast virtio_x86_64`
+`breakfast barrytrail`
 
 3. Build
 
-To build vda disk image:
-`make diskimage-vda`
+To build mmcblk disk image:
+`make diskimage-mmcblk`
 
 To build EFI System Partition (Boot) image:
 `make espimage-boot`
