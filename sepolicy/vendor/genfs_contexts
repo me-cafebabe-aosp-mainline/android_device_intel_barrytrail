@@ -1,2 +1,46 @@
 # DMI
 genfscon sysfs /devices/virtual/dmi/id				u:object_r:vendor_sysfs_dmi_id:s0
+
+# Graphics
+genfscon sysfs /devices/pci0000:00/0000:00:02.0		u:object_r:sysfs_gpu:s0
+
+# Power supply
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/80860F41:00/PNP0C0A:00/power_supply/BATC	u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0003:00/power_supply/ADP1			u:object_r:sysfs_batteryinfo:s0
+
+# Wakeup
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/80860F0A:00/BCM2E77:00/wakeup/wakeup	u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/80860F28:00/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/80860F41:00/PNP0C0A:00/wakeup/wakeup	u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/80860F41:01/10EC5640:00/wakeup/wakeup	u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/80860F41:03/ATML1000:00/wakeup/wakeup	u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/80860F41:04/INT33F5:00/wakeup/wakeup	u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0003:00/power_supply/ADP1/wakeup	u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INT0002:00/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INT33BB:00/device:26/wakeup/wakeup	u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INT33BB:00/device:27/wakeup/wakeup	u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INT33BB:00/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INT33FC:00/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INT33FC:01/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INT33FC:02/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INT3400:00/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INT3401:00/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INT3403:00/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INT3403:01/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INT3403:02/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INT3406:00/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/INTCFD9:00/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:00/wakeup/wakeup	u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:01/wakeup/wakeup	u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:02/wakeup/wakeup	u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:1a/wakeup/wakeup	u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/LNXVIDEO:00/wakeup/wakeup	u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C14:00/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C14:01/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2.3/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/pci0000:00/0000:00:14.0/wakeup/wakeup				u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/INT0002:00/wakeup/wakeup				u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/INTCFD9:00/gpio-keys.1.auto/wakeup/wakeup		u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/pnp0/00:00/wakeup/wakeup					u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/virtual/wakeup/wakeup						u:object_r:sysfs_wakeup:s0
