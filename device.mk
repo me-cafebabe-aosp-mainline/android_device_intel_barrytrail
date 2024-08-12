@@ -152,6 +152,10 @@ endif
 PRODUCT_PACKAGES += \
     android.hardware.security.keymint-service
 
+# Light
+PRODUCT_PACKAGES += \
+    android.hardware.light-service.barrytrail
+
 # Low performance optimizations
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/low_performance/init.low_performance.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.low_performance.rc
