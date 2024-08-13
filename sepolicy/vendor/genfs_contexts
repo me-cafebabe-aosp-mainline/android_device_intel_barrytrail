@@ -2,7 +2,12 @@
 genfscon sysfs /devices/virtual/dmi/id				u:object_r:vendor_sysfs_dmi_id:s0
 
 # Graphics
+genfscon proc /sys/dev/i915				u:object_r:proc_i915:s0
 genfscon sysfs /devices/pci0000:00/0000:00:02.0		u:object_r:sysfs_gpu:s0
+
+# MMC
+genfscon sysfs /devices/platform/80860F14:00/mmc_host/mmc1/mmc1:0001/block/mmcblk1/queue	u:object_r:vendor_sysfs_mmc:s0
+genfscon sysfs /devices/platform/80860F14:00/mmc_host/mmc2/mmc2:0001/block/mmcblk2/queue	u:object_r:vendor_sysfs_mmc:s0
 
 # Power supply
 genfscon sysfs /devices/LNXSYSTM:00/LNXSYBUS:00/80860F41:00/PNP0C0A:00/power_supply/BATC	u:object_r:sysfs_batteryinfo:s0
